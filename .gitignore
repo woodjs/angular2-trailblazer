@@ -1,5 +1,9 @@
 .DS_Store
 .idea/
+
 .sass-cache/
 
 node_modules/
+
+app/*.js
+app/*.js.map
