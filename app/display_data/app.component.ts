@@ -3,17 +3,16 @@ import {Component} from '@angular/core';
 import {Hero} from './hero';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `
-   <input type="text" (keyup)="1111" #a > 
-   {{a.value}}
-  `
+  templateUrl: 'my-app.component.html'
 })
 
 export class AppComponent {
-  inputMessage = '';
-
-  onInput(e) {
-    this.inputMessage += e.target.value + '|';
-  }
+  powerList = [
+    '炒菜',
+    '做饭',
+    '睡觉'
+  ];
+  model =  new Hero(1, '大锤', '做饭', '开朗');
 }
