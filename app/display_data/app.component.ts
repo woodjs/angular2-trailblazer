@@ -14,5 +14,20 @@ export class AppComponent {
     '做饭',
     '睡觉'
   ];
-  model =  new Hero(1, '大锤', '做饭', '开朗');
+
+  model = new Hero(1, this.powerList[0], '做饭', '开朗');
+
+  submitted = false;
+
+  active = true;
+
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  newHero() {
+    this.active = false;
+    this.model = new Hero(2, '', '', '');
+    setTimeout(() => this.active = true, 0)
+  }
 }

@@ -1,44 +1,44 @@
 <div class="container">
-  <div>
+  <div [hidden]="submitted">
     <h1>英雄表单</h1>
-    <form>
+    <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
       <div class="form-group">
         <label for="name">名称</label>
-        <input type="text" class="form-control" #name="ngModel" [(ngModel)]="model.name" name="name" id="name" required>TODO: remove this: {{model.name}}
-        <div class="alert alert-danger">名称是必填项</div>
+        <input type="text" class="form-control" [(ngModel)]="model.name" name="name" id="name" #name="ngModel" required>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">名称是必填项</div>
       </div>
       <div class="form-group">
         <label for="alterEgo">个性</label>
-        <input type="text" class="form-control" id="alterEgo" name="alterEgo" >
+        <input type="text" class="form-control" id="alterEgo" name="alterEgo" [(ngModel)]="model.alterEgo"  required>
       </div>
       <div class="form-group">
         <label for="power">技能</label>
-        <select class="form-control" id="power" required name="power">
-          <option  *ngFor="let p of powerList">{{p}}</option>
+        <select class="form-control" id="power" name="power" [(ngModel)]="model.power" #power="ngModel" required>
+          <option *ngFor="let p of powerList">{{p}}</option>
         </select>
-        <div class="alert alert-danger">
+        <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
           技能是必填项
         </div>
       </div>
-      <button type="submit" class="btn btn-default">提交</button>
-      <button type="button" class="btn btn-default">新英雄</button>
+      <button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">提交</button>
+      <button type="button" class="btn btn-default" (click)="newHero()">新英雄</button>
     </form>
   </div>
-  <div>
+  <div [hidden]="!submitted">
     <h2>您提交的如下：</h2>
     <div class="row">
       <div class="col-xs-3">名称</div>
-      <div class="col-xs-9  pull-left">大锤</div>
+      <div class="col-xs-9  pull-left">{{model.name}}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">个性</div>
-      <div class="col-xs-9 pull-left">呵呵</div>
+      <div class="col-xs-9 pull-left">{{model.alterEgo}}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">技能</div>
-      <div class="col-xs-9 pull-left">炒菜</div>
+      <div class="col-xs-9 pull-left">{{model.power}}</div>
     </div>
     <br>
-    <button class="btn btn-default">编辑</button>
+    <button class="btn btn-default" (click)="submitted=false">编辑</button>
   </div>
 </div>
