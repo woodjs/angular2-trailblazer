@@ -1,4 +1,4 @@
-import {Hero} from '../schema/hero';
+import {Hero} from '../schema/hero.schema';
 
 export const HEROES: Hero[] = [
   {id: 11, name: 'Mr. Nice'},
