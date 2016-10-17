@@ -6,7 +6,7 @@
 node_modules/
 typings/
 
-/app/**/*.js
-/app/**/*.js.map
+/client/**/*.js
+/client/**/*.js.map
 
 npm-debug.log
