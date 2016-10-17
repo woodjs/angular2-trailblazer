@@ -12,9 +12,12 @@ import {HeroService} from '../service/hero.service';
 })
 
 export class DashboardComponent implements OnInit{
+
   heroes: Hero[] = [];
 
-  constructor(private heroService: HeroService, private router: Router) {
+  constructor(
+    private heroService: HeroService,
+    private router: Router) {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5));
   }
 
