@@ -1,5 +1,5 @@
 {
-  "name": "account",
+  "name": "angular2-trailblazer",
   "version": "0.0.1",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
